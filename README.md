@@ -3,12 +3,13 @@
 
 # Flowork
 
-**Get what motivates you done, without losing concentration or driving yourself insane**
+**Get work done, without losing concentration or driving yourself insane**
 
-**FLATPAK LINK CURRENTLY DOES NOT POINT TO FLOWORK INSTALL; IT POINTS TO THE FLOWTIME INSTALL**
-<a href="https://flathub.org/apps/details/io.github.diegoivanme.flowtime">
-    <img width="200" src="https://flathub.org/assets/badges/flathub-badge-en.png" alt="Download on Flathub">
-</a>
+### Install 
+1. [Set up Flathub](https://flathub.org/en/setup) if you haven't already
+2. Download the [.flatpak](https://github.com/RaameshB/Flowork/releases/download/v1.0.0/flowork-x86_64.flatpak)
+3. Install with `flatpak install --user flowork-x86_64.flatpak`
+4. If you want to run the app via the terminal, run with `flatpak run io.github.raameshb.flowork`, otherwise run it like you would with any other app
 
 </div>
 
