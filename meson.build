@@ -1,11 +1,11 @@
-project('flowtime', ['c', 'vala'],
-          version: '6.5',
+project('flowork', ['c', 'vala'],
+          version: '0.1.0',
     meson_version: '>= 0.60.0',
   default_options: [ 'warning_level=2',
                    ],
 )
 
-app_id = 'io.github.diegoivanme.flowtime'
+app_id = 'io.github.raameshb.flowork'
 i18n = import('i18n')
 
 
@@ -13,6 +13,7 @@ i18n = import('i18n')
 subdir('data')
 subdir('src')
 subdir('po')
+subdir('tests')
 
 gnome.post_install(
   glib_compile_schemas: true,

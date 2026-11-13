@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/io/github/diegoivanme/flowtime/statinfo.ui")]
+[GtkTemplate (ui = "/io/github/raameshb/flowork/statinfo.ui")]
 public class Flowtime.StatInfo : Adw.Bin {
     [GtkChild]
     private unowned Adw.PreferencesGroup overview_group;

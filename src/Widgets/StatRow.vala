@@ -6,7 +6,7 @@
  */
 
 namespace Flowtime {
-    [GtkTemplate (ui = "/io/github/diegoivanme/flowtime/statrow.ui")]
+    [GtkTemplate (ui = "/io/github/raameshb/flowork/statrow.ui")]
     public class StatRow : Adw.Bin {
         [GtkChild]
         private unowned Gtk.Label date_label;

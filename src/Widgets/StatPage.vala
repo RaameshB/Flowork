@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/io/github/diegoivanme/flowtime/statpage.ui")]
+[GtkTemplate (ui = "/io/github/raameshb/flowork/statpage.ui")]
 public class Flowtime.StatPage : Adw.Bin {
     public Services.TimePeriod selected_period { get; private set; default = TODAY; }
 

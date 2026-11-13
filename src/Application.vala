@@ -25,13 +25,13 @@ namespace Flowtime {
 
         private const ActionEntry[] APP_ENTRIES = {
             { "quit", action_close },
-            { "about", about_flowtime },
+            { "about", about_flowork },
             { "preferences", flowtime_preferences }
         };
 
         public Application () {
             Object (
-                application_id: "io.github.diegoivanme.flowtime",
+                application_id: Config.APP_ID,
                 flags: GLib.ApplicationFlags.FLAGS_NONE
             );
             add_action_entries (APP_ENTRIES, this);
@@ -70,7 +70,7 @@ namespace Flowtime {
             try {
                 var parent = Xdp.parent_new_gtk (main_window);
                 int id = yield session_monitor.session_inhibit (parent,
-                                                       _("Flowtime is saving your statistics"),
+                                                       _("Flowork is saving your statistics"),
                                                          LOGOUT | USER_SWITCH,
                                                          null);
                 if (id == -1) {
@@ -116,9 +116,10 @@ namespace Flowtime {
             }
         }
 
-        private void about_flowtime () {
-            const string COPYRIGHT = "Copyright \xc2\xa9 2021-2024 Diego Iván M.E";
+        private void about_flowork () {
+            const string COPYRIGHT = "Copyright \xc2\xa9 2026 raameshb (forked from Flowtime by Diego Iván M.E)";
             const string? DEVELOPERS[] = {
+                "raameshb",
                 "Diego Iván M.E<diegoivan.mae@gmail.com>",
                 null
             };
@@ -134,15 +135,15 @@ namespace Flowtime {
 
             var about = new Adw.AboutDialog () {
                 application_icon = Config.APP_ID,
-                application_name = "Flowtime",
+                application_name = "Flowork",
                 artists = ARTISTS,
                 copyright = COPYRIGHT,
                 developers = DEVELOPERS,
-                issue_url = "https://github.com/Diego-Ivan/Flowtime/issues",
+                issue_url = "https://github.com/raameshb/flowork/issues",
                 license_type = GPL_3_0,
                 translator_credits = _("translator_credits"),
                 version = Config.VERSION,
-                website = "https://github.com/Diego-Ivan/Flowtime",
+                website = "https://github.com/raameshb/flowork",
             };
 
             about.add_credit_section (_("Sounds by"), SOUND_ARTISTS);

@@ -1,4 +1,4 @@
-application_id = 'io.github.diegoivanme.flowtime'
+application_id = 'io.github.raameshb.flowork'
 
 scalable_dir = join_paths('hicolor', 'scalable', 'apps')
 install_data(

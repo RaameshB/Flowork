@@ -1,6 +1,6 @@
 desktop_file = i18n.merge_file(
-  input: 'io.github.diegoivanme.flowtime.desktop.in',
-  output: 'io.github.diegoivanme.flowtime.desktop',
+  input: 'io.github.raameshb.flowork.desktop.in',
+  output: 'io.github.raameshb.flowork.desktop',
   type: 'desktop',
   po_dir: '../po',
   install: true,
@@ -15,8 +15,8 @@ if desktop_utils.found()
 endif
 
 appstream_file = i18n.merge_file(
-  input: 'io.github.diegoivanme.flowtime.appdata.xml.in',
-  output: 'io.github.diegoivanme.flowtime.appdata.xml',
+  input: 'io.github.raameshb.flowork.appdata.xml.in',
+  output: 'io.github.raameshb.flowork.appdata.xml',
   po_dir: '../po',
   install: true,
   install_dir: join_paths(get_option('datadir'), 'appdata')
@@ -25,11 +25,11 @@ appstream_file = i18n.merge_file(
 appstreamcli = find_program('appstreamcli', required: false)
 if appstreamcli.found()
   test('Validate appstream file', appstreamcli,
-    args: ['validate', appstream_file]
+    args: ['validate', '--no-net', appstream_file]
   )
 endif
 
-install_data('io.github.diegoivanme.flowtime.gschema.xml',
+install_data('io.github.raameshb.flowork.gschema.xml',
   install_dir: join_paths(get_option('datadir'), 'glib-2.0/schemas')
 )
 

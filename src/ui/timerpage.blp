@@ -21,8 +21,14 @@ template $FlowtimeTimerPage : Adw.Bin {
       }
 
       Label time_label {
-        label: "00:00";
+        label: "0s";
         styles ["time-label", "numeric"]
+      }
+
+      Label balance_pill {
+        halign: center;
+        margin-top: 8;
+        styles ["balance-pill", "caption", "numeric"]
       }
     }
 

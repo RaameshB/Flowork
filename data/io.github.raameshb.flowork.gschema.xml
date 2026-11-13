@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+	<schema id="io.github.raameshb.flowork" path="/io/github/raameshb/flowork/">
+	  <key name="tone" type="s">
+	    <choices>
+	      <choice value="baum.ogg"/>
+	      <choice value="beep.ogg"/>
+	      <choice value="bleep.ogg"/>
+	      <choice value="tone.ogg"/>
+	    </choices>
+	    <default>"tone.ogg"</default>
+	    <summary>Alarm Tone</summary>
+	    <description>Use a tone for the break time alarm</description>
+	  </key>
+
+	  <key name="break-percentage" type="d">
+	    <range min="10" max="100"/>
+	    <default>33</default>
+	    <summary>Percentage of work time to take into break time</summary>
+	  </key>
+
+	  <key name="months-saved" type="i">
+	    <range min="1" max="6"></range>
+	    <default>2</default>
+	    <summary>Months Saved for Statistics</summary>
+	    <description>The amount of months the statistical information will be retained. In case its overpassed, that data will be deleted</description>
+	  </key>
+
+	  <key name="autostart" type="b">
+	    <default>false</default>
+	    <summary>Timer autostart</summary>
+	    <description>Automatically start timer when the stage is changed</description>
+	  </key>
+
+	  <key name="distraction-free" type="b">
+	    <default>true</default>
+	    <summary>Enable/Disable Distraction Free Mode</summary>
+	    <description>The distraction free mode uses a special window without too much clutter. Ideal when you just want what matters</description>
+	  </key>
+
+	  <key name="activate-screensaver" type="b">
+	    <default>false</default>
+	    <summary>Activate screensaver in break time</summary>
+	    <description>Activates the screensaver when the break stage starts</description>
+	  </key>
+
+	  <key name="keep-running-in-background" type="b">
+	    <default>true</default>
+	    <summary>Keep running in background when window is closed</summary>
+	    <description>Hide window to GNOME Background Apps instead of stopping when closing the window while a timer is active</description>
+	  </key>
+
+	  <key name="carry-balance" type="b">
+	    <default>true</default>
+	    <summary>Carry balance across restarts</summary>
+	    <description>Persist the work/break debt-and-credit ledger across application restarts</description>
+	  </key>
+
+	  <key name="balance-ms" type="x">
+	    <default>0</default>
+	    <summary>Committed ledger balance in milliseconds</summary>
+	    <description>Nonnegative values store unspent earned work milliseconds; negative values store negative overrun break milliseconds</description>
+	  </key>
+
+	  <key name="auto-reset-debt-policy" type="s">
+	    <choices>
+	      <choice value="daily"/>
+	      <choice value="weekly"/>
+	      <choice value="off"/>
+	    </choices>
+	    <default>"daily"</default>
+	    <summary>Auto-reset work debt schedule</summary>
+	    <description>Schedule for automatically clearing unpaid work debt while keeping earned break credit</description>
+	  </key>
+
+	  <key name="weekly-reset-day" type="s">
+	    <choices>
+	      <choice value="monday"/>
+	      <choice value="sunday"/>
+	    </choices>
+	    <default>"monday"</default>
+	    <summary>Weekly reset day</summary>
+	    <description>Day of the week for weekly work-debt auto-resets</description>
+	  </key>
+
+	  <key name="reset-hour" type="i">
+	    <range min="0" max="23"/>
+	    <default>0</default>
+	    <summary>Work-debt reset hour</summary>
+	    <description>Local hour (0-23) at which daily or weekly work-debt resets occur</description>
+	  </key>
+
+	  <key name="last-debt-reset-utc" type="x">
+	    <default>0</default>
+	    <summary>Last debt reset timestamp (UTC ms)</summary>
+	    <description>Unix epoch milliseconds of the most recently applied work-debt reset boundary</description>
+	  </key>
+
+	  <key name="alert-break-exhausted" type="b">
+	    <default>true</default>
+	    <summary>Alert when break credit is exhausted</summary>
+	    <description>Play tone and send notification when break credit reaches zero</description>
+	  </key>
+
+	  <key name="alert-debt-cleared" type="b">
+	    <default>false</default>
+	    <summary>Alert when work debt is paid off</summary>
+	    <description>Play tone and send notification when work debt reaches zero</description>
+	  </key>
+	</schema>
+</schemalist>

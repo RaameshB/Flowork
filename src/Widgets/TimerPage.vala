@@ -6,7 +6,7 @@
  */
 
 namespace Flowtime {
-    [GtkTemplate (ui = "/io/github/diegoivanme/flowtime/timerpage.ui")]
+    [GtkTemplate (ui = "/io/github/raameshb/flowork/timerpage.ui")]
     public class TimerPage : Adw.Bin {
         [GtkChild]
         private unowned Gtk.Button pause_button;
@@ -14,6 +14,8 @@ namespace Flowtime {
         private unowned Gtk.Label time_label;
         [GtkChild]
         private unowned Gtk.Label stage_label;
+        [GtkChild]
+        private unowned Gtk.Label balance_pill;
 
         public Services.Timer _timer;
         public Services.Timer timer {
@@ -23,12 +25,15 @@ namespace Flowtime {
             set {
                 _timer = value;
                 timer.bind_property ("formatted-time", time_label, "label", SYNC_CREATE);
+                timer.bind_property ("formatted-balance", balance_pill, "label", SYNC_CREATE);
 
                 timer.notify["running"].connect (on_running_changed);
                 timer.notify["mode"].connect (update_labels);
+                timer.notify["phase"].connect (update_phase_classes);
 
                 on_running_changed ();
                 update_labels ();
+                update_phase_classes ();
             }
         }
 
@@ -44,6 +49,25 @@ namespace Flowtime {
                 return;
             }
             stage_label.label = _("Break Stage");
+        }
+
+        private void update_phase_classes () {
+            balance_pill.remove_css_class ("warning");
+            balance_pill.remove_css_class ("success");
+            balance_pill.remove_css_class ("error");
+
+            switch (timer.phase) {
+                case WORK_PAYING_DEBT:
+                    balance_pill.add_css_class ("warning");
+                    break;
+                case WORK_EARNING_CREDIT:
+                case BREAK_SPENDING_CREDIT:
+                    balance_pill.add_css_class ("success");
+                    break;
+                case BREAK_OVERRUN_DEBT:
+                    balance_pill.add_css_class ("error");
+                    break;
+            }
         }
 
         private void on_running_changed () {
@@ -71,4 +95,3 @@ namespace Flowtime {
         }
     }
 }
-

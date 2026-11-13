@@ -37,12 +37,35 @@ public class Flowtime.Services.Settings : Object {
         }
     }
 
+    private int _reset_hour;
+    public int reset_hour {
+        get {
+            return _reset_hour;
+        }
+        set {
+            if (value < 0 || value > 23) {
+                critical ("Reset hour is out of bounds");
+                return;
+            }
+            _reset_hour = value;
+        }
+    }
+
     public string tone { get; set; }
     public bool autostart { get; set; }
     public bool distraction_free { get; set; }
     public bool activate_screensaver { get; set; }
 
-    private Settings? instance = null;
+    public bool keep_running_in_background { get; set; }
+    public bool carry_balance { get; set; }
+    public int64 balance_ms { get; set; }
+    public string auto_reset_debt_policy { get; set; }
+    public string weekly_reset_day { get; set; }
+    public int64 last_debt_reset_utc { get; set; }
+    public bool alert_break_exhausted { get; set; }
+    public bool alert_debt_cleared { get; set; }
+
+    private static Settings? instance = null;
     public Settings () {
         if (instance == null) {
             instance = this;
@@ -50,8 +73,6 @@ public class Flowtime.Services.Settings : Object {
     }
 
     construct {
-        port_divisor ();
-
         settings.bind ("tone", this, "tone", DEFAULT);
         settings.bind ("autostart", this, "autostart", DEFAULT);
         settings.bind ("distraction-free", this, "distraction-free", DEFAULT);
@@ -59,20 +80,18 @@ public class Flowtime.Services.Settings : Object {
         settings.bind ("break-percentage", this, "break-percentage", DEFAULT);
         settings.bind ("activate-screensaver", this, "activate-screensaver", DEFAULT);
 
-        settings.delay ();
+        settings.bind ("keep-running-in-background", this, "keep-running-in-background", DEFAULT);
+        settings.bind ("carry-balance", this, "carry-balance", DEFAULT);
+        settings.bind ("balance-ms", this, "balance-ms", DEFAULT);
+        settings.bind ("auto-reset-debt-policy", this, "auto-reset-debt-policy", DEFAULT);
+        settings.bind ("weekly-reset-day", this, "weekly-reset-day", DEFAULT);
+        settings.bind ("reset-hour", this, "reset-hour", DEFAULT);
+        settings.bind ("last-debt-reset-utc", this, "last-debt-reset-utc", DEFAULT);
+        settings.bind ("alert-break-exhausted", this, "alert-break-exhausted", DEFAULT);
+        settings.bind ("alert-debt-cleared", this, "alert-debt-cleared", DEFAULT);
     }
 
     public void save () {
-        settings.apply ();
-    }
-
-    private void port_divisor () {
-        int divisor = settings.get_int ("break-divisor");
-        if (divisor < 0) {
-            return;
-        }
-
-        settings.set_double ("break-percentage", 100.0 / divisor);
-        settings.set_int ("break-divisor", -1);
+        GLib.Settings.sync ();
     }
 }

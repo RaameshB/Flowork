@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-	<id>io.github.diegoivanme.flowtime</id>
+	<id>io.github.raameshb.flowork</id>
 	<metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 
-  <name>Flowtime</name>
+  <name>Flowork</name>
   <summary>Spend your time wisely</summary>
 
 	<description>
@@ -48,7 +48,7 @@
   </requires>
 
   <provides>
-    <id>io.github.diegoivanme.flowtime.desktop</id>
+    <id>io.github.raameshb.flowork.desktop</id>
   </provides>
 
   <categories>
@@ -65,8 +65,8 @@
   </recommends>
 
   <content_rating type="oars-1.1" />
-  <translation type="gettext">flowtime</translation>
-  <launchable type="desktop-id">io.github.diegoivanme.flowtime.desktop</launchable>
+  <translation type="gettext">flowork</translation>
+  <launchable type="desktop-id">io.github.raameshb.flowork.desktop</launchable>
   <developer_name>Diego Iván</developer_name>
   <url type="homepage">https://github.com/Diego-Ivan/Flowtime</url>
   <url type="bugtracker">https://github.com/Diego-Ivan/Flowtime/issues</url>

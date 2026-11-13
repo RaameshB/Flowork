@@ -6,7 +6,7 @@
  */
 
 namespace Flowtime {
-    [GtkTemplate (ui = "/io/github/diegoivanme/flowtime/statwindow.ui")]
+    [GtkTemplate (ui = "/io/github/raameshb/flowork/statwindow.ui")]
     public class StatsWindow : Adw.Dialog {
         [GtkChild]
         private unowned StatList work_list;
@@ -37,12 +37,9 @@ namespace Flowtime {
             }
         }
 
-        public async void save_as_csv (File file)
-            requires (file.query_exists ())
-        {
+        public async void save_as_csv (File file) {
             var statistics = new Services.Statistics ();
-            string format = "date,worktime,breatkime";
-
+            string format = "date,worktime,breaktime\n";
             foreach (Models.Day day in statistics.all_days) {
                 var work_object = new Models.StatObject (day.date, day.worktime);
                 var break_object = new Models.StatObject (day.date, day.breaktime);
@@ -64,8 +61,20 @@ namespace Flowtime {
         }
 
         private async void save_action () {
+            var csv_filter = new Gtk.FileFilter () {
+                name = _("CSV files")
+            };
+            csv_filter.add_suffix ("csv");
+            csv_filter.add_mime_type ("text/csv");
+
+            var filters = new ListStore (typeof (Gtk.FileFilter));
+            filters.append (csv_filter);
+
             var file_dialog = new Gtk.FileDialog () {
-                modal = true
+                modal = true,
+                initial_name = "flowork-statistics.csv",
+                filters = filters,
+                default_filter = csv_filter
             };
 
             try {

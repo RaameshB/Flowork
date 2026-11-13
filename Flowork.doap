@@ -5,24 +5,23 @@
          xmlns:gnome="http://api.gnome.org/doap-extensions#"
          xmlns="http://usefulinc.com/ns/doap#">
 
-  <name xml:lang="en">Flowtime</name>
+  <name xml:lang="en">Flowork</name>
   <shortdesc xml:lang="en">
-      Get things done, keep concentrated
+      Spend your time wisely
   </shortdesc>
   <description xml:lang="en">
-      The Pomodoro technique is efficient for tasks you find boring, but having to take a break when you are 100% concentrated in something you like might be annoying. That's why the Flowtime technique exists: take appropiate breaks without loosing you **flow**.
+      Flowork is a fork of Flowtime with a continuous work-debt and break-credit ledger.
   </description>
-  <homepage rdf:resource="https://github.com/Diego-Ivan/Flowtime" />
-  <bug-database rdf:resource="https://github.com/Diego-Ivan/Flowtime/issues" />
+  <homepage rdf:resource="https://github.com/RaameshB/Flowork" />
+  <bug-database rdf:resource="https://github.com/RaameshB/Flowork/issues" />
 
   <category rdf:resource="http://api.gnome.org/doap-extensions#apps" />
   <programming-language>Vala</programming-language>
 
   <maintainer>
     <foaf:Person>
-      <foaf:name>Diego Iván</foaf:name>
-      <foaf:mbox rdf:resource="mailto:diegoivan.mae@gmail.com" />
+      <foaf:name>raameshb</foaf:name>
+      <foaf:mbox rdf:resource="mailto:raameshb@proton.me" />
     </foaf:Person>
   </maintainer>
 </Project>
-

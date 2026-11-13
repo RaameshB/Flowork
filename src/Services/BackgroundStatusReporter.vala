@@ -15,10 +15,10 @@ public class Flowtime.Services.BackgroundStatusReporter {
         }
         set {
             if (_timer != null) {
-                timer.updated.disconnect (on_timer_updated);
+                _timer.updated.disconnect (on_timer_updated);
             }
             _timer = value;
-            timer.updated.connect (on_timer_updated);
+            _timer.updated.connect (on_timer_updated);
         }
     }
 
@@ -27,19 +27,11 @@ public class Flowtime.Services.BackgroundStatusReporter {
     }
 
     private async void on_timer_updated () {
-        string status = "";
-        switch (timer.mode) {
-            case BREAK:
-                if (timer.seconds == 0) {
-                    status = _("Break is over!");
-                } else {
-                    status = _("Break Stage: %s".printf (timer.formatted_time));
-                }
-                break;
-            case WORK:
-                status = _("Work Stage: %s".printf (timer.formatted_time));
-                break;
-        }
+        string status = "%s %s · %s".printf (
+            timer.mode.to_string (),
+            timer.formatted_time,
+            timer.formatted_balance
+        );
 
         try {
             bool success = yield portal.set_background_status (status, null);

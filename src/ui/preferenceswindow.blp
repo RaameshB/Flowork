@@ -6,6 +6,20 @@ template $FlowtimePreferencesWindow : Adw.PreferencesDialog {
     title: _("_Preferences");
 
     Adw.PreferencesGroup {
+      title: _("Persistence");
+
+      Adw.SwitchRow keep_running_row {
+        title: _("Keep running in background when window is closed");
+        subtitle: _("Hide window to GNOME Background Apps instead of stopping active timers");
+      }
+
+      Adw.SwitchRow carry_balance_row {
+        title: _("Carry balance across restarts");
+        subtitle: _("Persist work debt and break credit across application launches");
+      }
+    }
+
+    Adw.PreferencesGroup {
       title: _("Statistics");
 
       Adw.SpinRow months_spinrow {
@@ -26,7 +40,7 @@ template $FlowtimePreferencesWindow : Adw.PreferencesDialog {
 
       Adw.SpinRow percentage_spinrow {
         title: _("Break time percentage");
-        subtitle: _("The percetage of work time that will be used as break time");
+        subtitle: _("The percentage of work time that will be used as break time");
 
         adjustment: Adjustment {
           lower: 10;
@@ -35,11 +49,70 @@ template $FlowtimePreferencesWindow : Adw.PreferencesDialog {
           page-increment: 10;
         };
       }
+
+      Adw.ComboRow auto_reset_row {
+        title: _("Auto-reset work debt");
+        subtitle: _("Automatically clear unpaid work debt while keeping earned break credit");
+        model: StringList {
+          strings [_("Daily"), _("Weekly"), _("Off")]
+        };
+      }
+
+      Adw.ComboRow weekly_day_row {
+        title: _("Weekly reset day");
+        model: StringList {
+          strings [_("Monday"), _("Sunday")]
+        };
+      }
+
+      Adw.SpinRow reset_hour_row {
+        title: _("Reset hour");
+        subtitle: _("Local hour (0-23) for scheduled work-debt resets");
+
+        adjustment: Adjustment {
+          lower: 0;
+          upper: 23;
+          step-increment: 1;
+          page-increment: 4;
+        };
+      }
+
+      Adw.SwitchRow alert_debt_cleared_row {
+        title: _("Work debt paid off alert");
+        subtitle: _("Play tone and notify when work debt reaches zero");
+      }
+
+      Adw.ActionRow reset_debt_row {
+        title: _("Reset Work Debt");
+        subtitle: _("Clear unpaid work debt without altering earned break credit or statistics");
+        activatable: true;
+
+        [suffix]
+        Button reset_debt_button {
+          label: _("Reset");
+          valign: center;
+          styles ["destructive-action"]
+        }
+      }
+
+      Adw.ActionRow reset_credit_row {
+        title: _("Reset Break Credit");
+        subtitle: _("Clear banked break credit without altering work debt or statistics");
+        activatable: true;
+
+        [suffix]
+        Button reset_credit_button {
+          label: _("Reset");
+          valign: center;
+          styles ["destructive-action"]
+        }
+      }
     }
 
     Adw.PreferencesGroup {
       title: _("Break Time");
-       Adw.ActionRow {
+
+      Adw.ActionRow {
         title: _("Autostart");
         subtitle: _("Automatically start the timer when the stage is changed");
 
@@ -55,6 +128,11 @@ template $FlowtimePreferencesWindow : Adw.PreferencesDialog {
         title: _("Activate Screensaver on Break Time");
         subtitle: _("Activate the screensaver when the break stage starts. Requires Autostart");
         sensitive: bind autostart_switch.active;
+      }
+
+      Adw.SwitchRow alert_break_exhausted_row {
+        title: _("Break credit exhausted alert");
+        subtitle: _("Play tone and notify when break credit reaches zero");
       }
     }
 

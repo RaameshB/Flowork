@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Flowtime
-Exec=flowtime
-Icon=io.github.diegoivanme.flowtime
+Name=Flowork
+Exec=flowork
+Icon=io.github.raameshb.flowork
 Terminal=false
 Type=Application
 Categories=GTK;Office;Utility;

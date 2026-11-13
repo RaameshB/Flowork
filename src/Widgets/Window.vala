@@ -5,10 +5,12 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-[GtkTemplate (ui = "/io/github/diegoivanme/flowtime/window.ui")]
+[GtkTemplate (ui = "/io/github/raameshb/flowork/window.ui")]
 public class Flowtime.Window : Adw.ApplicationWindow {
     [GtkChild]
     private unowned Services.Timer timer;
+    [GtkChild]
+    private unowned Adw.ToastOverlay toast_overlay;
     [GtkChild]
     private unowned Adw.ViewStack view_stack;
     [GtkChild]
@@ -28,6 +30,7 @@ public class Flowtime.Window : Adw.ApplicationWindow {
     private Services.Screensaver? screensaver = null;
     private Services.BackgroundStatusReporter background_reporter;
     private Services.Alarm alarm;
+    private Adw.Toast? active_toast = null;
 
     private bool _distraction_free = false;
     public bool distraction_free {
@@ -83,6 +86,7 @@ public class Flowtime.Window : Adw.ApplicationWindow {
     private async void init_services () {
         background_reporter = new Services.BackgroundStatusReporter (timer);
         alarm = new Services.Alarm (timer);
+        timer.toast_requested.connect (on_toast_requested);
 
         var color_provider = new Services.ColorProvider ();
         timer.bind_property ("mode", color_provider, "mode", SYNC_CREATE);
@@ -92,6 +96,16 @@ public class Flowtime.Window : Adw.ApplicationWindow {
         } catch (Error e) {
             critical (e.message);
         }
+    }
+
+    private void on_toast_requested (string message) {
+        if (active_toast != null) {
+            active_toast.dismiss ();
+        }
+        active_toast = new Adw.Toast (message) {
+            timeout = 3
+        };
+        toast_overlay.add_toast (active_toast);
     }
 
     private void distraction_free_transition () {
@@ -114,10 +128,15 @@ public class Flowtime.Window : Adw.ApplicationWindow {
 
     [GtkCallback]
     private bool on_close_request () {
-        if (!timer.running || timer.seconds == 0) {
-            timer.save_to_statistics ();
-            hide_on_close = false;
+        var settings = new Services.Settings ();
+        if (settings.keep_running_in_background && timer.running) {
+            hide_on_close = true;
+            return false;
         }
+
+        timer.stop ();
+        timer.save_to_statistics ();
+        hide_on_close = false;
         return false;
     }
 
@@ -130,11 +149,13 @@ public class Flowtime.Window : Adw.ApplicationWindow {
     }
 
     public void show_preferences () {
-        new PreferencesWindow (this, screensaver);
+        new PreferencesWindow (this, screensaver, timer);
     }
 
     public async bool query_quit () {
-        if (!timer.running) {
+        var settings = new Services.Settings ();
+        if (!timer.is_used || settings.carry_balance) {
+            timer.stop ();
             timer.save_to_statistics ();
             return true;
         }
@@ -152,6 +173,7 @@ public class Flowtime.Window : Adw.ApplicationWindow {
         string response = yield warning.choose (this, null);
 
         if (response == "quit") {
+            timer.stop ();
             timer.save_to_statistics ();
             return true;
         }
@@ -164,6 +186,7 @@ public class Flowtime.Window : Adw.ApplicationWindow {
     }
 
     public void query_save_for_shutdown () {
+        timer.stop ();
         timer.save_to_statistics ();
     }
 }

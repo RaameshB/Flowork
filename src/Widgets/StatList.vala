@@ -6,7 +6,7 @@
  */
 
 namespace Flowtime {
-    [GtkTemplate (ui = "/io/github/diegoivanme/flowtime/statlist.ui")]
+    [GtkTemplate (ui = "/io/github/raameshb/flowork/statlist.ui")]
     public class StatList : Adw.PreferencesGroup {
         private ListStore list_store = new ListStore (typeof(Models.StatObject));
         public ListModel list_model {

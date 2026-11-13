@@ -1,9 +1,9 @@
 {
-  "app-id": "io.github.diegoivanme.flowtime",
+  "app-id": "io.github.raameshb.flowork",
   "runtime": "org.gnome.Platform",
   "runtime-version": "master",
   "sdk": "org.gnome.Sdk",
-  "command": "flowtime",
+  "command": "flowork",
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.vala"
   ],
@@ -18,6 +18,7 @@
     "--socket=wayland",
     "--talk-name=org.freedesktop.ScreenSaver",
     "--talk-name=org.gnome.ScreenSaver",
+    "--system-talk-name=org.freedesktop.login1",
     "--device=dri"
   ],
   "cleanup": [
@@ -64,7 +65,7 @@
       ]
     },
     {
-      "name": "flowtime",
+      "name": "flowork",
       "builddir": true,
       "buildsystem": "meson",
       "sources": [
