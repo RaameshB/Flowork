@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg height="16px" viewBox="0 0 16 16" width="16px" xmlns="http://www.w3.org/2000/svg">
-    <path d="m 5 0 c -1.089844 0 -2 0.910156 -2 2 v 3 c 0 0.265625 0.105469 0.519531 0.292969 0.707031 l 2.292969 2.292969 l -2.292969 2.292969 c -0.1875 0.1875 -0.292969 0.441406 -0.292969 0.707031 v 3 c 0 1.089844 0.910156 2 2 2 h 6 c 1.089844 0 2 -0.910156 2 -2 v -3 c 0 -0.265625 -0.105469 -0.519531 -0.292969 -0.707031 l -2.292969 -2.292969 l 2.292969 -2.292969 c 0.1875 -0.1875 0.292969 -0.441406 0.292969 -0.707031 v -3 c 0 -1.089844 -0.910156 -2 -2 -2 z m 0 2 h 6 v 2 h -6 z m 2.414062 7 h 1.171876 l 2.414062 2.414062 v 1.585938 h -6 v -1.585938 z m 0 0" fill="#241f31"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g fill="currentColor">
+    <rect x="6" y="0" width="4" height="2" rx="0.75"/>
+    <path d="M7.25 2h1.5v2h-1.5z"/>
+    <g transform="rotate(45 8 9)">
+      <rect x="6.5" y="1" width="3" height="1.5" rx="0.5625"/>
+      <path d="M7.4375 2.5h1.125V4H7.4375z"/>
+    </g>
+    <path fill-rule="evenodd" d="M8 3a6 6 0 1 1 0 12A6 6 0 0 1 8 3Zm0 1.5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Z"/>
+    <circle cx="8" cy="9" r="0.85"/>
+  </g>
+  <g fill="none" stroke="currentColor" stroke-linecap="round">
+    <path d="M8 6a3 3 0 0 1 1.928 5.298" stroke-width="1"/>
+    <path d="M8 9 6 7.6" stroke-width="1"/>
+  </g>
 </svg>
