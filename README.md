@@ -26,10 +26,11 @@
 
 ## Features:
 
-* Assistant for the Flowtime working technique
+* Assistant for my own Flowork working technique
 * Assisted time calculations for breaks
 * Customizable tones for the end of the break
-* Notification that alerts you when your break is done
+* Notification that alerts you when your break credit has been exhausted
+* Configurable reset periods
 * Work and break time statistics
 * Export your statistics to CSV
 
@@ -98,3 +99,6 @@ cd builddir
 sudo ninja install
 flowork
 ```
+
+## Credits
+Most of this app's code comes from the Flowtime repo: [https://github.com/Diego-Ivan/Flowtime](https://github.com/Diego-Ivan/Flowtime). The modifications I've made have been LLM assisted and modify the internal logic of Flowtime, and add related configuration options. The UI/UX remains largely the same, apart from the small break credit/work debt bar that shows up below the stopwatch and that both work time and break time count up instead of down.
