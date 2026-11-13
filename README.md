@@ -5,13 +5,15 @@
 
 **Get work done, without losing concentration or driving yourself insane**
 
+</div>
+
 ### Install 
 1. [Set up Flathub](https://flathub.org/en/setup) if you haven't already
 2. Download the [.flatpak](https://github.com/RaameshB/Flowork/releases/download/v1.0.0/flowork-x86_64.flatpak)
 3. Install with `flatpak install --user flowork-x86_64.flatpak`
 4. If you want to run the app via the terminal, run with `flatpak run io.github.raameshb.flowork`, otherwise run it like you would with any other app
 
-</div>
+
 
 ## Gallery:
 
