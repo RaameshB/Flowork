@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="data/icons/hicolor/scalable/apps/io.github.diegoivanme.flowtime.svg" width="160" height="160"></img>
+	<img src="data/icons/hicolor/scalable/apps/io.github.raameshb.flowork.svg" width="160" height="160"></img>
 
 # Flowtime
 
