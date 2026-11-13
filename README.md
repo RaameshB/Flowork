@@ -1,5 +1,5 @@
 <div align="center">
-	<img src="data/icons/hicolor/scalable/apps/io.github.raameshb.flowork.svg" width="160" height="160"></img>
+  <img src="data/icons/hicolor/scalable/apps/io.github.raameshb.flowork.svg" width="160" height="160" alt="Flowork icon" />
 
 # Flowork
 
@@ -15,13 +15,13 @@
 
 
 
-## Gallery:
+## Gallery
 
 <div align="center">
-	<img src="https://raw.githubusercontent.com/Diego-Ivan/Flowtime/main/data/screenshots/01.png" width="283" height="286" style="padding-top=24;"></img>
-	<img src="https://raw.githubusercontent.com/Diego-Ivan/Flowtime/main/data/screenshots/02.png" width="283" height="286"></img>	
-	<img src="https://raw.githubusercontent.com/Diego-Ivan/Flowtime/main/data/screenshots/03.png" width="283" height="286"></img>
-	<img src="https://raw.githubusercontent.com/Diego-Ivan/Flowtime/main/data/screenshots/04.png" width="283" height="286"></img>
+  <img src="data/screenshots/01.png" width="280" alt="Work stage screenshot" />
+  <img src="data/screenshots/02.png" width="280" alt="Break stage screenshot" /><br />
+  <img src="data/screenshots/03.png" width="280" alt="Statistics overview screenshot" />
+  <img src="data/screenshots/04.png" width="280" alt="Preferences screenshot" />
 </div>
 
 ## Features:
@@ -83,11 +83,12 @@ GNOME Builder provides a high quality Flatpak integration. All dependencies, run
 
 | Dependency | Version |
 | ---------- | ------- |
-| Meson | 0.59.0 |
-| gtk-4  | 4.11 |
-| libportal | 0.7.1 |
-| libadwaita-1 |  1.4 |
-| libxml-2.0 |  1.0 |
+| Meson | >= 0.60.0 |
+| Vala (`valac`) | >= 0.56 |
+| `blueprint-compiler` | >= 0.10 |
+| `libportal-gtk4` | >= 0.6 |
+| `libadwaita-1` | >= 1.4 |
+| `libxml-2.0` | >= 1.0 |
 
 To compile and install, run:
 
